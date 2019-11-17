@@ -1,0 +1,11 @@
+<p>create new account</p>
+<%= form_for(@user) do |f| %>
+    <div>
+        <%= f.text_field :uname, :placeholder => 'username here' %><br>
+        <%= f.password_field :password, :placeholder => 'password here' %>
+    </div>
+    <br>
+    <div>
+        <%= f.submit "create account", class: 'btn-submit' %>
+    </div>
+<% end %>

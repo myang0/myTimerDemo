@@ -1,0 +1,13 @@
+<p>login to your account</p>
+<%= form_for(:session, url: login_path) do |f| %> 
+    <div>
+        <%= f.text_field :uname, :placeholder => "enter your username" %>
+        <br>
+        <%= f.password_field :password, :placeholder => "enter your password" %> 
+    </div>
+    <br>
+    <div>
+        <%= f.submit "log in", class: "btn-submit" %>
+    </div>
+<% end %>
+<%= link_to "don't have an account?  register here", '/signup' %>
