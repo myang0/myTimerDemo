@@ -1,1 +1,35 @@
-hi!
+<div class='container mt-5'>
+    <h1 style="font-size: 75px; font-family: 'Indie Flower', cursive; color: white; text-align: center;">
+        <strong>myTimer</strong> <%= icon('far', 'clock', class: 'strong') %>
+    </h1>
+
+    <br><br>
+
+    <h3 style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;">
+        what would you like to do today?
+    </h3>
+    <div class="row mt-3">
+        <div class='col' align='right'>
+            <a href='#' class='btn btn-danger btn-lg'>start new session</a>
+        </div>
+        <div class='col'>
+                <a href='#' class='btn btn-danger btn-lg'>view my statistics</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class='col' align='center'>
+                <a href='#' class='btn btn-danger btn-lg'>view my acheivments</a>
+        </div>
+    </div>
+
+    <br>
+
+    <h3 style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;">
+        logged in as <%= current_user.uname %>.
+    </h3>
+    <div style="text-align: center;">
+        <%= link_to "log out", logout_path, method: "delete", :style => 'color: black;' %>
+    </div>
+    
+    
+</div>

@@ -6,9 +6,9 @@
             <div class='alert login-form-wrapper'>
                 <%= form_for(:session, url: login_path) do |f| %> 
                     <div>
-                        <%= f.text_field :uname, :placeholder => "enter your username" %>
+                        <%= f.text_field :uname, :placeholder => "username here" %>
                         <br>
-                        <%= f.password_field :password, :placeholder => "enter your password" %> 
+                        <%= f.password_field :password, :placeholder => "password here" %> 
                     </div>
                     <br>
                     <div>
@@ -21,7 +21,6 @@
             
         </div>
     </div>
-    
     
     <a href='/signup' style='color:black;'>don't have an account?  sign up here.</a>
 </div>
