@@ -1,13 +1,27 @@
-<p>login to your account</p>
-<%= form_for(:session, url: login_path) do |f| %> 
-    <div>
-        <%= f.text_field :uname, :placeholder => "enter your username" %>
-        <br>
-        <%= f.password_field :password, :placeholder => "enter your password" %> 
+<div class='container mt-5'>
+    
+    <h1 class='start-label'>login to your account.</h1>
+    <div class='row'>
+        <div class='col'>
+            <div class='alert login-form-wrapper'>
+                <%= form_for(:session, url: login_path) do |f| %> 
+                    <div>
+                        <%= f.text_field :uname, :placeholder => "enter your username" %>
+                        <br>
+                        <%= f.password_field :password, :placeholder => "enter your password" %> 
+                    </div>
+                    <br>
+                    <div>
+                        <%= f.submit "log in", class: "reg-submit" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class='col'>
+            
+        </div>
     </div>
-    <br>
-    <div>
-        <%= f.submit "log in", class: "btn-submit" %>
-    </div>
-<% end %>
-<%= link_to "don't have an account?  register here", '/signup' %>
+    
+    
+    <a href='/signup' style='color:black;'>don't have an account?  sign up here.</a>
+</div>

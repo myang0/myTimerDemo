@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+html, body {
+    background: #ff4d4d;
+}
+
+.start-label {
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+}
+
+.login-form-wrapper {
+    background: #ff6666;
+}
+
+input[type=text],
+input[type=password] {
+    background-color: #ff9999;
+    color: white;
+    height: 40px;
+    border: 0px solid #E6E6E6;
+    border-radius: 3px; 
+    margin: 3px;
+    text-indent: 10px;
+}
+
+::placeholder {
+    color: white;
+}
+
+.reg-submit {
+    color: #FFFFFF;
+    font-size: 18px;
+    background: #ff3333;
+    border-radius: 3px; 
+    padding: 10px 20px;
+    border: 0;
+  }
