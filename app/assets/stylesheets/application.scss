@@ -54,3 +54,31 @@ input[type=password] {
     padding: 10px 20px;
     border: 0;
   }
+
+#timer {
+    font-family: 'Alata', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    color: #ff4d4d;
+    background-color: #ffe6e6;
+    border: 5px solid #ff8080;
+}
+
+#time-input {
+    background-color: #ffe6e6;
+    text-align: center;
+    color: #ff3333;
+    font-family: 'Alata', sans-serif;
+    padding: 5px;
+    border: 2px solid #cc0000;
+}
+
+#start-button {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+}
+
+.change-time-btn {
+    width: 50px;
+    font-size: 20px;
+}
