@@ -11,11 +11,7 @@ var activeSession = false;
 
 function getMinutes(seconds) {
     var minutes = (seconds - (seconds % 60)) / 60;
-    if (minutes < 10) {
-        return '0' + minutes;
-    } else {
-        return minutes.toString();
-    }
+    return minutes.toString();
 }
 
 function getSeconds(totalSeconds) {
@@ -34,6 +30,7 @@ $(document).ready(function() {
     var timeInput = $("#time-input");
     var startButton = $("#start-button");
     var msg = $('#sess-msg');
+    var invisBtn = $('#invis-btn-s');
 
     var fButton = $('#forfeit-btn');
     var cButton = $("#cancel-btn")
@@ -41,6 +38,41 @@ $(document).ready(function() {
     
     timer.html(minutes + ':00');
 
+    function endSession() {
+        activeSession = false;
+
+        // Show hidden buttons once again
+        addButton.slideDown();
+        subButton.slideDown();
+        timeInput.slideDown();
+        startButton.slideDown();
+        $("#exit-link").slideDown();
+
+        // Hide session buttons
+        cButton.css("display", "none");
+        fButton.css("display", "none");
+
+        // Reset cancel timer
+        cancelTime = maxCancelTime;
+        cButton.html("cancel (" + maxCancelTime + ")");
+
+        // Reset timer display
+        timer.html(minutes + ':00');
+
+        // Stop timer
+        clearInterval(time);
+    }
+
+    function sessionSuccess() {
+        endSession();
+
+        // Open the modal, which the user to use to submit their record into the table
+        invisBtn.click();
+        $("#modal-msg").html("session complete.  you did it!");
+        $("#success-field").val(true)
+    }
+
+    // Behaviour after every second after starting timer
     function startTimer() {
         time = setInterval(function() {
             if (cancelTime >= -1) {
@@ -51,8 +83,14 @@ $(document).ready(function() {
                 }
                 cancelTime--;
             }
-            timer.html(getMinutes(totalSeconds) + ':' + getSeconds(totalSeconds));
-            totalSeconds--;
+
+            if (totalSeconds >= 0) {
+                timer.html(getMinutes(totalSeconds) + ':' + getSeconds(totalSeconds));
+                totalSeconds--;
+            } else if (totalSeconds <= 0) {
+                sessionSuccess();
+            }
+            
         }, 1000);
     }
     
@@ -66,6 +104,7 @@ $(document).ready(function() {
         }
     })
     
+    // Click + button, add time
     addButton.click(function() {
         if (minutes < maxMinutes) {
             minutes += 5;
@@ -75,6 +114,7 @@ $(document).ready(function() {
         timer.html(minutes + ':00');
     })
     
+    // Click - button, subtract time
     subButton.click(function() {
         if (minutes > minMinutes) {
             minutes -= 5;
@@ -91,12 +131,14 @@ $(document).ready(function() {
         subButton.slideUp();
         timeInput.slideUp();
         startButton.slideUp();
+        $("#exit-link").slideUp();
 
         // Show session buttons
         cButton.css("display", "inline");
         fButton.css("display", "inline");
 
         msg.html('focus.');
+        $("#duration-field").val(minutes)
 
         // Start the timer
         if (!activeSession) {
@@ -104,31 +146,16 @@ $(document).ready(function() {
             activeSession = true;
             totalSeconds = minutes * 60;
         }
-    })  
+    }) 
+    
+    fButton.click(function() {
+        $("#modal-msg").html("session terminated.");
+    })
     
     // Reset timer
     cButton.click(function() {
-        activeSession = false;
-
-        // Show hidden buttons once again
-        addButton.slideDown();
-        subButton.slideDown();
-        timeInput.slideDown();
-        startButton.slideDown();
-
-        // Hide session buttons
-        cButton.css("display", "none");
-        fButton.css("display", "none");
-
-        // Reset cancel timer
-        cancelTime = maxCancelTime;
-        cButton.html("cancel (" + maxCancelTime + ")");
-
-        // Reset timer display
-        timer.html(minutes + ':00');
-
-        // Stop timer
-        clearInterval(time);
+        msg.html('start a new session.');
+        endSession()
     })
 })
 

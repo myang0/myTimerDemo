@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   get '/timer' => 'records#new'
   post 'timer' => 'records#create'
+  resources :records
 
 end

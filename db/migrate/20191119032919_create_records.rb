@@ -3,7 +3,6 @@ class CreateRecords < ActiveRecord::Migration[6.0]
     create_table :records do |t|
       t.string :uname
       t.integer :duration
-      t.date :date
       t.boolean :success
 
       t.timestamps
