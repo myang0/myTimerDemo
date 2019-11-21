@@ -24,6 +24,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass', '~> 5.11.2'
+gem 'chartkick'
+gem 'groupdate'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

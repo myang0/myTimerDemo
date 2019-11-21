@@ -13,6 +13,12 @@ Rails.application.routes.draw do
 
   get '/timer' => 'records#new'
   post 'timer' => 'records#create'
+
+  get '/stats' => 'records#index'
+  get '/stats/year' => 'records#index'
+  get '/stats/month' => 'records#index'
+  get '/stats/week' => 'records#index'
+  get '/stats/day' => 'records#index'
   resources :records
 
 end
