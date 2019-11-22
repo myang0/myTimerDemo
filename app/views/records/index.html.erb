@@ -52,13 +52,14 @@
     </div>
 
     <div class="mt-2">
-        <%= column_chart @records %>       
+        <% chartData = [{name: "Failures", data: @failures}, {name: "Successes", data: @successes}] %>
+        <%= column_chart chartData, id: "bar-chart", xtitle: "Month/Day/Hour", ytitle: "Minutes",
+            height: "400px", messages: {empty: "No data to show!"} %>       
     </div>
 
-    
-
+    <br>
     <div align='center' id="exit-link">
-        <a href='/welcome' style='color:black;'>go back to home page.</a>
+        <a href='/welcome' style='color:black;'>&larr; go back to home page.</a>
     </div>
     
 </div>

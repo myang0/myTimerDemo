@@ -31,5 +31,10 @@
         <%= link_to "log out", logout_path, method: "delete", :style => 'color: black;' %>
     </div>
     
+    <ul>
+        <% current_user.badges.each do |badge| %>
+            <li><%= badge.name %></li>
+        <% end %>
+    </ul>
     
 </div>

@@ -1,5 +1,5 @@
 const maxMinutes = 60;
-const minMinutes = 5;
+const minMinutes = 1;
 
 var minutes = 25;
 var totalSeconds;

@@ -26,6 +26,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'chartkick'
 gem 'groupdate'
+gem 'merit'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
