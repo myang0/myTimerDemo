@@ -26,23 +26,33 @@ module Merit
       # Find badge by badge_id, badge_id takes presidence over badge
       # grant_on 'users#create', badge_id: 7, badge: 'just-registered', to: :itself
 
-      grant_on 'records#create', badge: 'Rookie', to: :action_user do |record|
+      # Grant badge to user if they have at least one successful session completed
+      grant_on 'records#create', model_name: 'User', badge: 'Rookie!', to: :action_user do |record|
         Record.where(uname: record.uname, success: true).count >= 1
       end
 
-      grant_on 'records#create', badge: 'Intermediate', to: :action_user do |record|
+      # Grant badge to user if they have at least 10 successful sessions completed
+      grant_on 'records#create', model_name: 'User', badge: 'Intermediate!', to: :action_user do |record|
         Record.where(uname: record.uname, success: true).count >= 10
       end
 
-      grant_on 'records#create', badge: 'Veteran', to: :action_user do |record|
+      # Grant badge to user if they have at least 50 successful sessions completed
+      grant_on 'records#create', model_name: 'User', badge: 'Veteran!', to: :action_user do |record|
         Record.where(uname: record.uname, success: true).count >= 50
       end
 
-      grant_on 'records#create', badge: 'Intermediate', to: :action_user do |record|
+      # Grant badge to user if they have at least 250 successful sessions completed
+      grant_on 'records#create', model_name: 'User', badge: 'Intermediate!', to: :action_user do |record|
         Record.where(uname: record.uname, success: true).count >= 250
       end
 
-      grant_on 'records#create', badge_id: 6, to: :action_user do |record|
+      # Grant badge to user if they have a session which is 60 minutes long
+      grant_on 'records#create', model_name: 'User', badge: 'Focused!', to: :action_user do |record|
+        Record.where(uname: record.uname, success:true, duration: 60).count >= 1
+      end
+
+      # Grant badge to user if they have a session which is a minute long
+      grant_on 'records#create', model_name: 'User', badge: "...That's it?", to: :action_user do |record|
         Record.where(uname: record.uname, success:true, duration: 1).count >= 1
       end
 

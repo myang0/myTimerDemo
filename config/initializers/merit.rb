@@ -4,7 +4,7 @@ Merit.setup do |config|
   # config.checks_on_each_request = true
 
   # Define ORM. Could be :active_record (default) and :mongoid
-  # config.orm = :active_record
+  config.orm = :active_record
 
   # Add application observers to get notifications when reputation changes.
   # config.add_observer 'MyObserverClassName'
@@ -34,36 +34,63 @@ end
 
 Merit::Badge.create!(
   id: 1,
-  name: "Rookie",
-  description: "Complete your 1st session as a user."
+  name: "Rookie!",
+  description: "Complete your 1st session as a user.  Everyone needs to start somewhere!",
+  custom_fields: {image_path: "/images/bronze_medal.png"}
 )
 
 Merit::Badge.create!(
   id: 2,
-  name: "Intermediate",
-  description: "Complete your 10th session as a user."
+  name: "Intermediate!",
+  description: "Complete your 10th session as a user.  You're getting better!",
+  custom_fields: {image_path: "/images/silver_medal.png"}
 )
 
 Merit::Badge.create!(
   id: 3,
-  name: "Veteran",
-  description: "Complete your 50th session as a user."
+  name: "Veteran!",
+  description: "Complete your 50th session as a user.  You're getting good at this!",
+  custom_fields: {image_path: "/images/gold_medal.png"}
 )
 
 Merit::Badge.create!(
   id: 4,
-  name: "Pro",
-  description: "Complete your 250th session as a user."
+  name: "Pro!",
+  description: "Complete your 250th session as a user.  You're really good at this!",
+  custom_fields: {image_path: "/images/trophy.png"}
 )
 
 Merit::Badge.create!(
   id: 5,
   name: "Focused!",
-  description: "Complete a session that is an hour long."
+  description: "Complete a session that is an hour long.",
+  custom_fields: {image_path: "/images/focused.png"}
 )
 
 Merit::Badge.create!(
   id: 6,
   name: "...That's it?",
-  description: "Complete a  session that is just a minute long."
+  description: "Complete a session that is just a minute long.",
+  custom_fields: {image_path: "/images/underachiever.png"}
+)
+
+Merit::Badge.create!(
+  id: 7,
+  name: "Hot Streak!",
+  description: "Complete 5 sessions in a row.  Keep it up!",
+  custom_fields: {image_path: "/images/flame1.png"}
+)
+
+Merit::Badge.create!(
+  id: 8,
+  name: "Hotter Streak!",
+  description: "Complete 10 sessions in a row.",
+  custom_fields: {image_path: "/images/flame2.png"}
+)
+
+Merit::Badge.create!(
+  id: 9,
+  name: "Hottest Streak!",
+  description: "Complete 25 sessions in a row.",
+  custom_fields: {image_path: "/images/flame3.png"}
 )

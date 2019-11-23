@@ -18,7 +18,7 @@
     </div>
     <div class="row mt-4">
         <div class='col' align='center'>
-                <a href='#' class='btn btn-danger btn-lg'>view my acheivments</a>
+                <a href='/achievements' class='btn btn-danger btn-lg'>view my acheivments</a>
         </div>
     </div>
 
@@ -30,11 +30,5 @@
     <div style="text-align: center;">
         <%= link_to "log out", logout_path, method: "delete", :style => 'color: black;' %>
     </div>
-    
-    <ul>
-        <% current_user.badges.each do |badge| %>
-            <li><%= badge.name %></li>
-        <% end %>
-    </ul>
     
 </div>

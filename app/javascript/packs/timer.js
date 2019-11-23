@@ -106,7 +106,7 @@ $(document).ready(function() {
     
     // Click + button, add time
     addButton.click(function() {
-        if (minutes < maxMinutes) {
+        if (minutes < maxMinutes && minutes + 5 < maxMinutes) {
             minutes += 5;
             timeInput.val(minutes);
         }
@@ -116,7 +116,7 @@ $(document).ready(function() {
     
     // Click - button, subtract time
     subButton.click(function() {
-        if (minutes > minMinutes) {
+        if (minutes > minMinutes && minutes - 5 > minMinutes) {
             minutes -= 5;
             timeInput.val(minutes);
         }

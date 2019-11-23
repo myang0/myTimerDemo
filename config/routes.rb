@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get '/stats/day' => 'records#index'
   resources :records
 
+  get '/achievements' => 'achievements#index'
+
 end
