@@ -35,28 +35,28 @@ end
 Merit::Badge.create!(
   id: 1,
   name: "Rookie!",
-  description: "Complete your 1st session as a user.  Everyone needs to start somewhere!",
+  description: "Complete your 1st session as a user.  Keep it up!",
   custom_fields: {image_path: "/images/bronze_medal.png"}
 )
 
 Merit::Badge.create!(
   id: 2,
   name: "Intermediate!",
-  description: "Complete your 10th session as a user.  You're getting better!",
+  description: "Complete your 10th session as a user.  Great improvement!",
   custom_fields: {image_path: "/images/silver_medal.png"}
 )
 
 Merit::Badge.create!(
   id: 3,
   name: "Veteran!",
-  description: "Complete your 50th session as a user.  You're getting good at this!",
+  description: "Complete your 50th session as a user.  Nice work!",
   custom_fields: {image_path: "/images/gold_medal.png"}
 )
 
 Merit::Badge.create!(
   id: 4,
   name: "Pro!",
-  description: "Complete your 250th session as a user.  You're really good at this!",
+  description: "Complete your 250th session as a user.  You're a champion!",
   custom_fields: {image_path: "/images/trophy.png"}
 )
 
@@ -77,7 +77,7 @@ Merit::Badge.create!(
 Merit::Badge.create!(
   id: 7,
   name: "Hot Streak!",
-  description: "Complete 5 sessions in a row.  Keep it up!",
+  description: "Complete 5 sessions in a row.",
   custom_fields: {image_path: "/images/flame1.png"}
 )
 

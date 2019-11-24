@@ -56,6 +56,21 @@ module Merit
         Record.where(uname: record.uname, success:true, duration: 1).count >= 1
       end
 
+      # Grant badge to user if they have completed 5 sessions in a row
+      grant_on 'records#create', model_name: 'User', badge: "Hot Streak!", to: :action_user do |record|
+        Record.order('created_at desc').where(uname: record.uname, success: true).limit(5).count >= 5
+      end
+
+      # Grant badge to user if they have completed 10 sessions in a row
+      grant_on 'records#create', model_name: 'User', badge: "Hotter Streak!", to: :action_user do |record|
+        Record.order('created_at desc').where(uname: record.uname, success: true).limit(10).count >= 10
+      end
+
+      # Grant badge to user if they have completed 25 sessions in a row
+      grant_on 'records#create', model_name: 'User', badge: "Hottest Streak!", to: :action_user do |record|
+        Record.order('created_at desc').where(uname: record.uname, success: true).limit(25).count >= 25
+      end
+
       # If it has 10 comments, grant commenter-10 badge
       # grant_on 'comments#create', badge: 'commenter', level: 10 do |comment|
       #   comment.user.comments.count == 10

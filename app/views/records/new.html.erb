@@ -14,6 +14,16 @@
         <div class='col-4 p-5 rounded-lg' id='timer' align='center'>00:00</div>
         <div class='col-4'></div>
     </div>
+    <h5 class="mt-2" style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;" id='sess-msg'>
+        <% latestFailure = Record.order('created_at desc').where(uname: current_user.uname, success: false).limit(1).pluck(:created_at) %>
+        <% if latestFailure == [] %>
+            <% streak = Record.where(uname: current_user.uname, success: true).count %>
+        <% else %>
+            <% cTime = Time.now.midnight + 1.day %>
+            <% streak = Record.where(uname: current_user.uname, success:true, created_at: latestFailure[0]..cTime).count %>
+        <% end %>
+        current streak: <%= streak %>
+    </h5>
     
     <div class='row mt-3'>
         <div class='col' align='right'>
@@ -50,8 +60,9 @@
             </button>
         </span>
     </div>
+
     <div align='center' id="exit-link">
-        <a href='/welcome' style='color:black;'>go back to home page.</a>
+        <a href='/welcome' style='color:black;'>&larr; go back to home page.</a>
     </div>
 
     <button type="button" id="invis-btn-s" class="btn btn-primary" data-toggle="modal" data-target="#sub-modal" style="display: none;">

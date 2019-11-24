@@ -149,6 +149,7 @@ $(document).ready(function() {
     }) 
     
     fButton.click(function() {
+        clearInterval(time);
         $("#modal-msg").html("session terminated.");
     })
     
