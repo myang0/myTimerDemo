@@ -8,6 +8,7 @@ const maxCancelTime = 10;
 var cancelTime = maxCancelTime;
 
 var activeSession = false;
+var finSound = document.getElementById("finishAudio")
 
 function getMinutes(seconds) {
     var minutes = (seconds - (seconds % 60)) / 60;
@@ -65,6 +66,7 @@ $(document).ready(function() {
 
     function sessionSuccess() {
         endSession();
+        finSound.play()
 
         // Open the modal, which the user to use to submit their record into the table
         invisBtn.click();

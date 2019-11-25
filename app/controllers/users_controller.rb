@@ -5,11 +5,16 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        if @user.save
-            redirect_to '/login'
-        else
-            redirect_to '/signup'
+
+        newName = @user.uname
+        if User.where(uname: newName).count <= 0
+            if @user.save
+                redirect_to '/login'
+            end
         end
+
+        redirect_to '/signup'
+
     end
 
     private

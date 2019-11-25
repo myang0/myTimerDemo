@@ -1,6 +1,10 @@
 <!-- For the timer functionality -->
 <%= javascript_pack_tag 'timer', 'data-turbolinks-track': 'reload' %>
 <div class='container mt-5'>
+    <audio id="finishAudio">
+        <source src="sounds/finishSound.mp3" type="audio/mpeg">
+    </audio>
+
     <h1 style="font-size: 75px; font-family: 'Indie Flower', cursive; color: white; text-align: center;">
         <strong>myTimer</strong> <%= icon('far', 'clock', class: 'strong') %>
     </h1>
@@ -14,6 +18,7 @@
         <div class='col-4 p-5 rounded-lg' id='timer' align='center'>00:00</div>
         <div class='col-4'></div>
     </div>
+    
     <h5 class="mt-2" style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;" id='sess-msg'>
         <% latestFailure = Record.order('created_at desc').where(uname: current_user.uname, success: false).limit(1).pluck(:created_at) %>
         <% if latestFailure == [] %>
@@ -61,6 +66,7 @@
         </span>
     </div>
 
+
     <div align='center' id="exit-link">
         <a href='/welcome' style='color:black;'>&larr; go back to home page.</a>
     </div>
@@ -77,7 +83,7 @@
 
                     </div>
 
-                    <%= form_for(@record) do |f| %>
+                    <%= form_for (@record), html: {id: "recordForm"} do |f| %>
                         <div>
                             <%= f.hidden_field :uname, :placeholder => 'username here', :value => current_user.uname, :id => 'uname-field' %>
                             <%= f.hidden_field :duration, :placeholder => 'duration here', :id => 'duration-field' %>

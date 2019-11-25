@@ -42,6 +42,27 @@ input[type=password] {
     text-indent: 10px;
 }
 
+// input[type=text_area] {
+//     background-color: #ff9999;
+//     color: white;
+//     height: 120px;
+//     border: 0px solid #E6E6E6;
+//     border-radius: 3px; 
+//     margin: 3px;
+//     text-indent: 10px;
+// }
+
+textarea {
+    background-color: #ff9999;
+    color: white;
+    height: 120px;
+    width: 75%;
+    border: 0px solid #E6E6E6;
+    border-radius: 3px; 
+    margin: 3px;
+    text-indent: 10px;
+}
+
 ::placeholder {
     color: white;
 }

@@ -16,7 +16,7 @@
             <% for i in Merit::Badge.all.keys %>
                 <% if current_user.badges.include?(Merit::Badge.find(i)) %>
                     <% b = Merit::Badge.find(i) %>
-                    <div class="achievement-have">
+                    <div class="achievement-have" data-toggle="tooltip" data-placement="top" title="achieved">
                         <div class="row">
                             <div class="col-3">
                                 <div class="have-img-wrapper">
@@ -30,7 +30,8 @@
                         </div>
                     </div>
                 <% else %>
-                    <div class="achievement-not-have">
+                    <% b = Merit::Badge.find(i) %>
+                    <div class="achievement-not-have" data-toggle="tooltip" data-placement="top" title="not yet achieved">
                         <div class="row">
                             <div class="col-3">
                                 <div class="not-have-img-wrapper">
@@ -39,7 +40,7 @@
                             </div>
                             <div class="col-9 p-1">
                                 <h3><u><strong>???</strong></u><br></h3>
-                                <p>??????????</p>
+                                <p>Hint: <%= b.custom_fields[:hint] %></p>
                             </div>
                         </div>
                     </div>
@@ -52,6 +53,9 @@
 
         </div>
     </div>
+
+    <% current_user.rm_badge(4) %>
+    <% current_user.rm_badge(5) %>
 
     <div align='center' id="exit-link">
         <a href='/welcome' style='color:black;'>&larr; go back to home page.</a>

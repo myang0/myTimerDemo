@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :goals
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'sessions#new'
 
@@ -22,5 +23,7 @@ Rails.application.routes.draw do
   resources :records
 
   get '/achievements' => 'achievements#index'
+
+  get '/goals' => 'goals#index'
 
 end

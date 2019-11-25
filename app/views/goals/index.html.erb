@@ -1,0 +1,66 @@
+<div class='container mt-5'>
+  <h1 style="font-size: 75px; font-family: 'Indie Flower', cursive; color: white; text-align: center;">
+    <strong>myTimer</strong> <%= icon('far', 'clock', class: 'strong') %>
+  </h1> 
+
+  <br><br>
+
+  <h3 style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;">
+      <%= current_user.uname %>'s goals
+  </h3>
+
+  <br>
+
+  <div class="row">
+    <div class="col-2">
+
+    </div>
+    <div class="col-8">
+      <div align="center">
+        <a href='goals/new' class="btn btn-primary">Create New Goal <%= icon('fas', 'plus-circle', class: 'strong') %></a>
+      </div>
+      <br>
+      <% @goals.each do |goal| %>
+        <div class="goal-wrapper" align="center">
+          <div class="row">
+            <div class="col" align="left">
+              <h2><strong><u><%= goal.title %></u></strong></h2>
+            </div>
+            <div class="col" align="right">
+              <button class="option-btn" type="button" data-toggle="collapse" data-target="#collapse<%= goal.id %>" aria-expanded="false" aria-controls="collapse<%= goal.id %>">
+                Show/Collapse Info
+              </button>
+            </div>
+          </div>
+          
+          <div class="collapse" id="collapse<%= goal.id %>">
+            <hr>
+            <p><strong><u>Category:&nbsp;</u></strong><%= goal.category %></p>
+            <p><strong><u>Description:&nbsp;</u></strong><%= goal.description %></p>
+
+            <div class="row">
+              <div class="col" align="right">
+                <a class="btn btn-success" href="goals/<%= goal.id %>/edit">Edit Goal</a>
+              </div>
+              <div class="col" align="left">
+                <%= link_to 'Destroy Goal', goal, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <br>
+        
+      <% end %>
+      
+    </div>
+    <div class="col-2">
+
+    </div>
+  </div>
+
+  <div align='center' id="exit-link">
+    <a href='/welcome' style='color:black;'>&larr; go back to home page.</a>
+  </div>
+</div>
