@@ -10,6 +10,7 @@ Merit.setup do |config|
   # config.add_observer 'MyObserverClassName'
 
   # Define :user_model_name. This model will be used to grand badge if no
+  config.user_model_name = "User"
   # `:to` option is given. Default is 'User'.
   # config.user_model_name = 'User'
 

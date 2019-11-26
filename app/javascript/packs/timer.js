@@ -39,6 +39,10 @@ $(document).ready(function() {
     
     timer.html(minutes + ':00');
 
+    $('#sidebar-toggle').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
     function endSession() {
         activeSession = false;
 

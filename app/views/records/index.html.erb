@@ -55,7 +55,7 @@
         <% chartData = [{name: "Failures", data: @failures}, {name: "Successes", data: @successes}] %>
         <%= column_chart chartData, id: "bar-chart", xtitle: "Month/Day/Hour", ytitle: "Minutes",
             height: "400px", messages: {empty: "No data to show!"}, 
-            library: {scales: {xAxes: [{ticks: {reverse: true}}]}} %>       
+            library: {scales: {xAxes: [{ticks: {reverse: false}}]}} %>       
     </div>
 
     <br>

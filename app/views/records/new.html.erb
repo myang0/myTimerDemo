@@ -1,77 +1,116 @@
-<!-- For the timer functionality -->
+<!-- For the timer page -->
 <%= javascript_pack_tag 'timer', 'data-turbolinks-track': 'reload' %>
-<div class='container mt-5'>
-    <audio id="finishAudio">
-        <source src="sounds/finishSound.mp3" type="audio/mpeg">
-    </audio>
 
-    <h1 style="font-size: 75px; font-family: 'Indie Flower', cursive; color: white; text-align: center;">
-        <strong>myTimer</strong> <%= icon('far', 'clock', class: 'strong') %>
-    </h1>
-    <br><br>
-    <h3 style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;" id='sess-msg'>
-        begin a new session.
-    </h3>
+<audio id="finishAudio">
+    <source src="sounds/finishSound.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="row mt-5">
-        <div class='col-4'></div>
-        <div class='col-4 p-5 rounded-lg' id='timer' align='center'>00:00</div>
-        <div class='col-4'></div>
-    </div>
+<div class="wrapper">
+    <nav class="active" id="sidebar">
+        <h1 style="color: #800000; font-family: 'Varela Round', sans-serif;"><strong>My Goals:</strong></h1>
+        <hr>
+
+        <% goals = Goal.where(uname: current_user.uname) %>
+        <ol>
+            <% goals.each do |goal| %>
+                <div class='goal-disp'>
+                    <li><h4><strong><u> <%= goal.title %></u></strong></h4></li>
+                    <ul>
+                        <li><%= goal.category %></li>
+                        <li><%= goal.description %></li>
+                        <%= link_to 'Done!', goal, method: :delete, remote: true, :class => "btn btn-success del-btn mt-2" %>
+                    </ul>
+                    <hr>
+                </div>
+            <% end %>
+        </ol>
+    </nav>
+
+    <div class='container mt-5'>
+        <h1 style="font-size: 75px; font-family: 'Indie Flower', cursive; color: white; text-align: center;">
+            <strong>myTimer</strong> <%= icon('far', 'clock', class: 'strong') %>
+        </h1>
     
-    <h5 class="mt-2" style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;" id='sess-msg'>
-        <% latestFailure = Record.order('created_at desc').where(uname: current_user.uname, success: false).limit(1).pluck(:created_at) %>
-        <% if latestFailure == [] %>
-            <% streak = Record.where(uname: current_user.uname, success: true).count %>
-        <% else %>
-            <% cTime = Time.now.midnight + 1.day %>
-            <% streak = Record.where(uname: current_user.uname, success:true, created_at: latestFailure[0]..cTime).count %>
-        <% end %>
-        current streak: <%= streak %>
-    </h5>
+        <hr class='mt-4'>
+            <div class="row">
+                <div class="col">
     
-    <div class='row mt-3'>
-        <div class='col' align='right'>
-            <button type='button' class='btn btn-danger change-time-btn' id='sub-btn'>
-                <strong>-</strong>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger option-btn" id="sidebar-toggle">Show/Hide Goals</button>
+                </div>
+                <div class="col">
+                
+                </div>
+            </div>
+        <hr>
+    
+        <h3 style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;" id='sess-msg'>
+            begin a new session.
+        </h3>
+    
+        <div class="row mt-3">
+            <div class='col-4'></div>
+            <div class='col-4 p-5 rounded-lg' id='timer' align='center'>00:00</div>
+            <div class='col-4'></div>
+        </div>
+        
+        <h5 class="mt-2" style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;" id='sess-msg'>
+            <% latestFailure = Record.order('created_at desc').where(uname: current_user.uname, success: false).limit(1).pluck(:created_at) %>
+            <% if latestFailure == [] %>
+                <% streak = Record.where(uname: current_user.uname, success: true).count %>
+            <% else %>
+                <% cTime = Time.now.midnight + 1.day %>
+                <% streak = Record.where(uname: current_user.uname, success:true, created_at: latestFailure[0]..cTime).count %>
+            <% end %>
+            current streak: <%= streak %>
+        </h5>
+        
+        <div class='row mt-3'>
+            <div class='col' align='right'>
+                <button type='button' class='btn btn-danger change-time-btn' id='sub-btn'>
+                    <strong>-</strong>
+                </button>
+            </div>
+            <div class='col'>
+                <button type='button' class='btn btn-danger change-time-btn' id='add-btn'>
+                    <strong>+</strong>
+                </button>
+            </div>
+        </div>
+    
+        <div align='center' class='mt-3'>
+            <input type="number" placeholder="enter time (in minutes) here." id="time-input" min="1" max="60" value="25">
+        </div>
+    
+        <div align='center' class='mt-3'>
+            <button type='button' class='btn btn-danger p-3' id='start-button'>
+                begin session!
             </button>
         </div>
-        <div class='col'>
-            <button type='button' class='btn btn-danger change-time-btn' id='add-btn'>
-                <strong>+</strong>
-            </button>
+    
+        <div align='center' class='mt-3'>
+            <span>
+                <button type='button' class='btn btn-danger p-3 session-btn' style='display: none' id='cancel-btn'>
+    
+                </button>
+            </span>
+            <span>
+                <button type='button' class='btn btn-danger p-3 session-btn' style='display: none' id='forfeit-btn' data-toggle="modal" data-target="#sub-modal" data-tooltip="tooltip" title="are you sure?">
+                    give up
+                </button>
+            </span>
+        </div>
+    
+        <div align='center' id="exit-link">
+            <a href='/welcome' style='color:black;'>&larr; go back to home page.</a>
         </div>
     </div>
-
-    <div align='center' class='mt-3'>
-        <input type="number" placeholder="enter time (in minutes) here." id="time-input" min="1" max="60" value="25">
-    </div>
-
-    <div align='center' class='mt-3'>
-        <button type='button' class='btn btn-danger p-3' id='start-button'>
-            begin session!
-        </button>
-    </div>
-
-    <div align='center' class='mt-3'>
-        <span>
-            <button type='button' class='btn btn-danger p-3 session-btn' style='display: none' id='cancel-btn'>
-
-            </button>
-        </span>
-        <span>
-            <button type='button' class='btn btn-danger p-3 session-btn' style='display: none' id='forfeit-btn' data-toggle="modal" data-target="#sub-modal" data-tooltip="tooltip" title="are you sure?">
-                give up
-            </button>
-        </span>
-    </div>
+</div>
 
 
-    <div align='center' id="exit-link">
-        <a href='/welcome' style='color:black;'>&larr; go back to home page.</a>
-    </div>
 
-    <button type="button" id="invis-btn-s" class="btn btn-primary" data-toggle="modal" data-target="#sub-modal" style="display: none;">
+<button type="button" id="invis-btn-s" class="btn btn-primary" data-toggle="modal" data-target="#sub-modal" style="display: none;">
 
     </button>
 
@@ -98,5 +137,3 @@
             </div>
         </div>
     </div>
-
-</div>
