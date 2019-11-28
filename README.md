@@ -1,6 +1,4 @@
-# README
-
-myTimer
+# myTimer
 
 This is a simple productivity web application.
 
