@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         if User.where(uname: newName).count <= 0
             if @user.save
                 redirect_to '/login'
+                return
             end
         end
 
