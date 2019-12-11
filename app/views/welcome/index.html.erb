@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'home', 'data-turbolinks-track': 'reload' %>
+
 <div class='container mt-5'>
     <h1 style="font-size: 75px; font-family: 'Indie Flower', cursive; color: white; text-align: center;">
         <strong>myTimer</strong> <%= icon('far', 'clock', class: 'strong') %>
@@ -8,24 +10,67 @@
     <h3 style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;">
         what would you like to do today?
     </h3>
-    <div class="row mt-3">
-        <div class='col' align='right'>
-            <a href='/timer' class='btn btn-danger btn-lg'>start new session</a>
-        </div>
-        <div class='col'>
-                <a href='/stats' class='btn btn-danger btn-lg'>view my statistics</a>
-        </div>
-    </div>
-    <div class="row mt-4">
-        <div class='col' align='right'>
-                <a href='/achievements' class='btn btn-danger btn-lg'>view my acheivements</a>
-        </div>
+    <br>
 
-        <div class='col'>
-                <a href='/goals' class='btn btn-danger btn-lg'>manage goals</a>
-        </div>
-    </div>
+    <div align='center'>
+        <hr>
+        <div>
+            <a href='/timer' class='btn btn-danger btn-lg' id='ss-btn'>sessions</a>
 
+            <div class='mt-2' id='ss-text' style='display: none;'>
+                <div class="arrow-up"></div>
+                <div class="text-wrapper">
+                    Start a new session.
+                </div>
+            </div>
+        
+        </div>
+        <hr>
+
+        <hr>
+        <div>
+            <a href='/stats' class='btn btn-danger btn-lg' id='st-btn'>stats</a>
+
+            <div class='mt-2' id='st-text' style='display: none;'>
+                <div class="arrow-up"></div>
+                <div class="text-wrapper">
+                    View statistics for my previous sessions.
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <hr>
+        <div>
+            <a href='/achievements' class='btn btn-danger btn-lg' id='ach-btn'>acheivements</a>
+
+            <div class='mt-2' id='ach-text' style='display: none;'>
+                <div class="arrow-up"></div>
+                <div class="text-wrapper">
+                    View my acheivements and any locked acheivements.
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+        <hr>
+        <div>
+            <a href='/goals' class='btn btn-danger btn-lg' id='gl-btn'>goals</a>
+
+            <div class='mt-3' id='gl-text' style='display: none;'>
+                <div class="arrow-up"></div>
+                <div class="text-wrapper">
+                    Create, view, and delete goals.
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        
+    </div>
+    
     <br>
 
     <h3 style="font-family: 'Varela Round', sans-serif; color: white; text-align: center;">
