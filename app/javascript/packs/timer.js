@@ -43,6 +43,14 @@ $(document).ready(function() {
         $('#sidebar').toggleClass('active');
     });
 
+    fButton.mouseenter(function() {
+        $('#ff-warning').slideDown();
+    });
+
+    fButton.mouseleave(function() {
+        $('#ff-warning').slideUp();
+    });
+
     function endSession() {
         activeSession = false;
 
