@@ -1,31 +1,36 @@
-<%= form_with(model: goal, local: true) do |form| %>
-  <% if goal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
-
-      <ul>
-        <% goal.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<h4 style="font-family: 'Varela Round', sans-serif; color: white;">Add a New Goal</h4>
+<div align="left" style="width: 50%;" class="form-wrapper">
+  <%= form_with(model: goal, local: true) do |form| %>
+    <% if goal.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+  
+        <ul>
+          <% goal.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <%= form.hidden_field :uname, :value => current_user.uname %>
+  
+    <div class="field">
+      <%= form.text_field :title, :placeholder => "title of goal here" %>
+    </div>
+  
+    <div class="field">
+      <%= form.text_field :category, :placeholder => "category of goal here" %>
+    </div>
+  
+    <div class="field">
+      <%= form.text_area :description, :placeholder => "description of goal here" %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit "confirm", class: 'reg-submit' %>
     </div>
   <% end %>
+</div>
 
-  <%= form.hidden_field :uname, :value => current_user.uname %>
 
-  <div class="field">
-    <%= form.text_field :title, :placeholder => "title of goal here" %>
-  </div>
-
-  <div class="field">
-    <%= form.text_field :category, :placeholder => "category of goal here" %>
-  </div>
-
-  <div class="field">
-    <%= form.text_area :description, :placeholder => "description of goal here" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "confirm", class: 'reg-submit' %>
-  </div>
-<% end %>

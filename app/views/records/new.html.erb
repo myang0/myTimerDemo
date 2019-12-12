@@ -116,28 +116,28 @@
 
 <button type="button" id="invis-btn-s" class="btn btn-primary" data-toggle="modal" data-target="#sub-modal" style="display: none;">
 
-    </button>
+</button>
 
-    <div class="modal fade" id="sub-modal" aria-labelledby="sub-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content p-3" align='center'>
+<div class="modal fade" id="sub-modal" aria-labelledby="sub-modal" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content p-3" align='center'>
 
-                    <div id='modal-msg'>
-
-                    </div>
-
-                    <%= form_for (@record), html: {id: "recordForm"} do |f| %>
-                        <div>
-                            <%= f.hidden_field :uname, :placeholder => 'username here', :value => current_user.uname, :id => 'uname-field' %>
-                            <%= f.hidden_field :duration, :placeholder => 'duration here', :id => 'duration-field' %>
-                            <%= f.hidden_field :success, :placeholder => 'success here', :value => false, :id => 'success-field' %>
-                        </div>
-                        <br>
-                        <div>
-                            <%= f.submit "ok.", class: 'reg-submit' %>
-                        </div>
-                    <% end %> 
+            <div id='modal-msg'>
 
             </div>
+
+            <%= form_for (@record), html: {id: "recordForm"} do |f| %>
+                <div>
+                    <%= f.hidden_field :uname, :placeholder => 'username here', :value => current_user.uname, :id => 'uname-field' %>
+                    <%= f.hidden_field :duration, :placeholder => 'duration here', :id => 'duration-field' %>
+                    <%= f.hidden_field :success, :placeholder => 'success here', :value => false, :id => 'success-field' %>
+                </div>
+                <br>
+                <div>
+                    <%= f.submit "ok.", class: 'reg-submit' %>
+                </div>
+            <% end %> 
+
         </div>
     </div>
+</div>

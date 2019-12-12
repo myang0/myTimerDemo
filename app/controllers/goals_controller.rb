@@ -32,20 +32,6 @@ class GoalsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /goals/1
-  # PATCH/PUT /goals/1.json
-  def update
-    respond_to do |format|
-      if @goal.update(goal_params)
-        format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
-        format.json { render :show, status: :ok, location: @goal }
-      else
-        format.html { render :edit }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy
